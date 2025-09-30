@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <!-- Semantic metadata for SEO and accessible rendering -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Minimalist, accessible Todo App — HTML, CSS, vanilla JS.">
+  <meta name="theme-color" content="#FAFAFA">
+  <title>Todos — Minimal, Accessible, Fast</title>
+  <!-- Preload minified CSS; edit style.css during development -->
+  <link rel="stylesheet" href="style.min.css">
+</head>
+<body>
+  <!-- Skip link for keyboard users; minimal and essential -->
+  <a class="skip-link" href="#main">Skip to main</a>
+
+  <!-- Header with site identity, minimal nav, and theme toggle -->
+  <header class="site-header" role="banner">
+    <div class="wrap header-grid">
+      <a class="brand" href="#" aria-current="page">
+        <span class="brand__mark" aria-hidden="true">✓</span>
+        <span class="brand__text">Todos</span>
+      </a>
+      <nav class="site-nav" aria-label="Primary">
+        <ul class="nav-list">
+          <li><a class="nav-link" href="#" aria-current="page">List</a></li>
+        </ul>
+      </nav>
+      <!-- Theme toggle is accessible: aria-pressed reflects state -->
+      <button id="theme-toggle" class="btn" type="button" aria-pressed="false" aria-label="Toggle color theme">
+        <span aria-hidden="true">🌓</span>
+        <span class="vis">Toggle theme</span>
+      </button>
+    </div>
+  </header>
+
+  <main id="main" class="wrap" role="main">
+    <h1 class="visually-tight">Your todos</h1>
+
+    <!-- Status live region for announcements (add/delete/complete) -->
+    <div id="status" class="sr-only" aria-live="polite"></div>
+
+    <!-- Controls: add form + filter; minimal UI, no filler -->
+    <section aria-labelledby="add-title">
+      <h2 id="add-title" class="visually-tight">Add a task</h2>
+      <form id="todo-form" class="card" novalidate>
+        <div class="form-row">
+          <label for="task-title" class="label">Task</label>
+          <input id="task-title" name="title" class="input" type="text" required minlength="2" maxlength="120" placeholder="e.g., Ship accessibility fixes">
+        </div>
+        <div class="form-row grid-2">
+          <div>
+            <label for="task-priority" class="label">Priority</label>
+            <select id="task-priority" name="priority" class="input">
+              <option value="normal" selected>Normal</option>
+              <option value="low">Low</option>
+              <option value="high">High</option>
+            </select>
+          </div>
+          <div>
+            <label for="task-due" class="label">Due</label>
+            <input id="task-due" name="due" class="input" type="date">
+          </div>
+        </div>
+        <div class="form-actions">
+          <button type="submit" class="btn primary">
+            <span aria-hidden="true">➕</span>
+            <span class="vis">Add task</span>
+          </button>
+          <button type="reset" class="btn">
+            <span aria-hidden="true">♻️</span>
+            <span class="vis">Reset</span>
+          </button>
+        </div>
+        <!-- Error list: assertive for clear feedback -->
+        <div id="form-errors" class="form-errors" aria-live="assertive"></div>
+      </form>
+    </section>
+
+    <section aria-labelledby="list-title">
+      <h2 id="list-title" class="visually-tight">Your list</h2>
+
+      <!-- Minimal filters: status only (All/Active/Completed) -->
+      <div class="controls card">
+        <label for="filter-status" class="label">Filter</label>
+        <select id="filter-status" class="input" aria-label="Filter tasks by status">
+          <option value="all">All</option>
+          <option value="active">Active</option>
+          <option value="completed">Completed</option>
+        </select>
+        <output id="stats" class="stats" aria-live="polite">0 tasks</output>
+        <div class="list-actions">
+          <button id="clear-completed" class="btn">
+            <span aria-hidden="true">🧹</span>
+            <span class="vis">Clear completed</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- List: essential structure, keyboard-accessible controls -->
+      <ul id="todo-list" class="todo-list" role="list" aria-label="Todo items"></ul>
+    </section>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="wrap footer-grid">
+      <small>&copy; <span id="year"></span> Todos</small>
+      <a href="#" class="nav-link">Accessibility</a>
+    </div>
+  </footer>
+
+  <!-- Defer JS; link minified for production. Edit script.js in dev -->
+  <script src="script.min.js" defer></script>
+
+  <!-- noscript: app remains readable; no extra filler -->
+  <noscript>
+    <p style="padding:1rem">JavaScript is required for interactivity. You can still view tasks if listed here.</p>
+  </noscript>
+</body>
+</html>
