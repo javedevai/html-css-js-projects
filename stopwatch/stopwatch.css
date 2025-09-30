@@ -1,0 +1,43 @@
+/* Custom styles for the app */
+body {
+    font-family: 'Inter', sans-serif;
+}
+
+/* Using a monospaced font for the timer to prevent width changes */
+.timer-font {
+    font-family: 'Roboto Mono', monospace;
+}
+
+/* Simple transition for button feedback */
+.control-button {
+    transition: all 0.2s ease-in-out;
+}
+
+/* Adding a subtle shadow on hover for a lift effect */
+.control-button:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.control-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* --- Theme Icon Visibility Rules --- */
+
+/* By default, hide both icons */
+#theme-toggle-dark-icon,
+#theme-toggle-light-icon {
+    display: none;
+}
+
+/* Show the moon icon ONLY when the html element has the .dark class */
+html.dark #theme-toggle-dark-icon {
+    display: block;
+}
+
+/* Show the sun icon ONLY when the html element DOES NOT have the .dark class */
+html:not(.dark) #theme-toggle-light-icon {
+    display: block;
+}
