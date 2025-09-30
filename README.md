@@ -8,10 +8,10 @@
 
 ## 📋 Projects Overview
 
-| Project | Description | Technologies | Live Demo |
-|---------|-------------|--------------|-----------|
-| **Calculator** | Fully functional calculator with modern UI | HTML, CSS, JavaScript | [View Demo](https://javedevai.github.io/html-css-js-projects/calculator/index.html) |
-| **Stopwatch** | Precision stopwatch with start/stop/reset | HTML, CSS, JavaScript | [View Demo](https://javedevai.github.io/html-css-js-projects/stopwatch/stopwatch.html) |
+| Project        | Description                                | Technologies          | Live Demo                                                                              |
+| -------------- | ------------------------------------------ | --------------------- | -------------------------------------------------------------------------------------- |
+| **Calculator** | Fully functional calculator with modern UI | HTML, CSS, JavaScript | [View Demo](https://javedevai.github.io/html-css-js-projects/calculator/index.html)    |
+| **Stopwatch**  | Precision stopwatch with start/stop/reset  | HTML, CSS, JavaScript | [View Demo](https://javedevai.github.io/html-css-js-projects/stopwatch/stopwatch.html) |
 
 ## ✨ Features
 
@@ -31,13 +31,15 @@
 ## 🚀 Quick Start
 
 1. Clone the repository
+
 ```bash
-git clone https://github.com/yourusername/html-css-js-projects.git
+git clone https://github.com/javedevai/html-css-js-projects.git
 ```
 
 2. Open any project folder
+
 ```bash
-cd html-css-js-projects/calculator
+cd html-css-js-projects
 ```
 
 3. Open `index.html` in your browser
@@ -45,16 +47,17 @@ cd html-css-js-projects/calculator
 ## 💼 Why Choose These Projects?
 
 - ✅ **Production Ready** - Clean, professional code
-- ✅ **Responsive** - Mobile and desktop optimized  
+- ✅ **Responsive** - Mobile and desktop optimized
 - ✅ **Modern Standards** - Following best practices
 - ✅ **Well Documented** - Easy to understand and modify
 - ✅ **Scalable** - Built with growth in mind
 
 ## 🤝 Let's Work Together
 
-Looking for a **frontend developer** who can deliver quality web solutions? 
+Looking for a **frontend developer** who can deliver quality web solutions?
 
 **What I offer:**
+
 - Custom web applications
 - Responsive website development
 - JavaScript functionality
@@ -63,7 +66,6 @@ Looking for a **frontend developer** who can deliver quality web solutions?
 
 ### 📞 Contact Me
 
-- **Email**: your.email@example.com
 - **LinkedIn**: [Your LinkedIn Profile](https://linkedin.com/in/javedevai)
 - **Portfolio**: [Your Portfolio Website](https://javedevai.netlify.app/)
 
@@ -71,4 +73,4 @@ Looking for a **frontend developer** who can deliver quality web solutions?
 
 ⭐ **Star this repository if you found it helpful!**
 
-*Built with ❤️ by [javedevai]*
+_Built with ❤️ by [javedevai]_
