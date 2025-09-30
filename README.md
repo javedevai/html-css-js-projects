@@ -13,6 +13,7 @@
 | **Calculator**   | Fully functional calculator with modern UI | HTML, CSS, JavaScript | [View Demo](https://javedevai.github.io/html-css-js-projects/calculator/index.html)    |
 | **Stopwatch**    | Precision stopwatch with start/stop/reset  | HTML, CSS, JavaScript | [View Demo](https://javedevai.github.io/html-css-js-projects/stopwatch/stopwatch.html) |
 | **Analog Clock** | Simple Analog Clock with Modern UI         | HTML, CSS, JavaScript | [View Demo](https://javedevai.github.io/html-css-js-projects/analog-clock/index.html)  |
+| **TODO App**     | Simple TODO App with Modern UI             | HTML, CSS, JavaScript | [View Demo](https://javedevai.github.io/html-css-js-projects/todo-app/index.html)      |
 
 ## ✨ Features
 
