@@ -49,10 +49,10 @@ body.dark {
   flex-direction: column;
   align-items: center;
   padding: 1.1rem 0;
-  position: sticky;
+  position: fixed;
   top: 0;
   left: 0;
-  z-index: 10;
+  z-index: 100;
   transition:
     background var(--transition),
     width var(--transition);
@@ -61,17 +61,6 @@ body.dark {
 body.dark .sidebar {
   background: var(--dark-surface);
   box-shadow: none;
-}
-.sidebar-header {
-  margin-bottom: 2rem;
-  display: flex;
-  justify-content: center;
-  width: 100%;
-}
-.brand-icon {
-  font-size: 2.2rem;
-  color: var(--primary);
-  transition: color var(--transition);
 }
 .sidebar-nav {
   display: flex;
@@ -162,12 +151,14 @@ body.dark .nav-btn:focus-visible {
   flex: 1 1 auto;
   min-height: 100vh;
   padding: 2.5rem 0 2.5rem 0;
+  margin-left: var(--sidebar-width);
   display: flex;
   flex-direction: column;
   align-items: center;
   background: var(--bg);
-  transition: background var(--transition);
+  transition: background var(--transition), margin-left var(--transition);
   position: relative;
+  width: calc(100% - var(--sidebar-width));
 }
 body.dark .main-content {
   background: var(--dark-bg);
@@ -416,104 +407,190 @@ body.dark .converter-results {
   padding: 0.16em 0.18em;
 }
 
-/* THEME SWITCHER BUTTON */
-.theme-toggle-btn {
+/* THEME SWITCHER */
+.theme-switch {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  z-index: 50;
+  display: inline-block;
+  width: 52px;
+  height: 28px;
+}
+
+.theme-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
   position: absolute;
-  top: 1.3rem;
-  right: 2.2rem;
-  z-index: 10;
-  border: none;
-  background: transparent;
   cursor: pointer;
-  padding: 0.31em;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--surface-variant);
+  transition: var(--transition);
+  border-radius: 34px;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  left: 4px;
+  bottom: 4px;
+  background: linear-gradient(135deg, #ffd700, #ffa500);
+  transition: var(--transition);
   border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition:
-    background var(--transition),
-    box-shadow var(--transition),
-    outline var(--transition);
-  box-shadow: 0 2px 8px 0 rgba(44, 62, 80, 0.04);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
-.theme-toggle-btn:focus-visible,
-.theme-toggle-btn:hover {
-  background: var(--hover);
-  outline: 2px solid var(--primary);
+
+body.dark .slider {
+  background: var(--dark-surface-variant);
 }
-body.dark .theme-toggle-btn:focus-visible,
-body.dark .theme-toggle-btn:hover {
-  background: var(--dark-hover);
-  outline: 2px solid #a8dab5;
+
+body.dark .slider:before {
+  background: linear-gradient(135deg, #4a5568, #2d3748);
+  transform: translateX(24px);
 }
-.theme-toggle-btn .material-icons {
-  font-size: 1.36rem;
-  color: var(--primary);
-  transition:
-    opacity var(--transition),
-    color var(--transition),
-    transform var(--transition);
-  user-select: none;
+
+.slider:hover {
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 0 0 3px var(--hover);
 }
-.theme-toggle-btn .moon {
-  opacity: 0;
-  pointer-events: none;
-  position: absolute;
-}
-body.dark .theme-toggle-btn .sun {
-  opacity: 0;
-  pointer-events: none;
-  position: absolute;
-}
-body.dark .theme-toggle-btn .moon {
-  opacity: 1;
-  pointer-events: auto;
-  position: static;
-}
-.theme-toggle-btn .sun {
-  opacity: 1;
-}
-body.dark .theme-toggle-btn .sun {
-  opacity: 0;
-}
-.theme-toggle-btn .moon {
-  opacity: 0;
-}
-body.dark .theme-toggle-btn .moon {
-  opacity: 1;
+
+body.dark .slider:hover {
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3), 0 0 0 3px var(--dark-hover);
 }
 
 /* Responsive */
-@media (max-width: 650px) {
-  .main-content {
-    padding: 1.2rem 0;
-  }
-  .main-section {
-    max-width: 99vw;
-  }
+@media (max-width: 768px) {
   .sidebar {
-    min-width: 44px;
-    width: 44px;
-    max-width: 44px;
+    min-width: 50px;
+    width: 50px;
+    max-width: 50px;
+    padding: 0.8rem 0;
+    transform: translateX(0);
+    transition: transform var(--transition), width var(--transition), background var(--transition);
   }
-  .sidebar:hover,
-  .sidebar:focus-within {
-    width: var(--sidebar-width-expanded);
+  
+  .sidebar.expanded {
+    width: 200px;
+    max-width: 200px;
   }
-  .theme-toggle-btn {
-    right: 1.1rem;
+  
+  .nav-btn {
+    padding: 0.6rem;
+    font-size: 0.95rem;
+  }
+  
+  .nav-btn .material-icons {
+    font-size: 1.25rem;
+  }
+  
+  .nav-label {
+    display: none;
+  }
+  
+  .sidebar.expanded .nav-label {
+    display: inline;
+    opacity: 1;
+  }
+  
+  .main-content {
+    margin-left: 50px;
+    width: calc(100% - 50px);
+    padding: 1.5rem 0.8rem;
+  }
+  
+  .main-section {
+    max-width: 100%;
+    padding: 0 0.5rem;
+  }
+  
+  .card {
+    padding: 1rem 0.8rem;
+  }
+  
+  .calculator-card {
+    padding: 0.9rem 0.7rem;
+  }
+  
+  .screen {
+    padding: 0.8rem;
+    min-height: 60px;
+  }
+  
+  .current-operand {
+    font-size: 1.7rem;
+  }
+  
+  .keypad {
+    gap: 0.4rem;
+  }
+  
+  .keypad button {
+    font-size: 1rem;
+    padding: 0.7rem 0;
+  }
+  
+  .section-title {
+    font-size: 1.1rem;
+  }
+  
+  .converter-input,
+  .converter-select {
+    font-size: 0.95rem;
+    padding: 0.5rem;
+  }
+  
+  .theme-switch {
+    width: 56px;
+    height: 30px;
+  }
+  
+  .slider:before {
+    height: 22px;
+    width: 22px;
+  }
+  
+  body.dark .slider:before {
+    transform: translateX(26px);
   }
 }
-@media (max-width: 500px) {
-  .main-section {
-    max-width: 100vw;
-    padding: 0 2vw;
+
+@media (max-width: 480px) {
+  .main-content {
+    padding: 1rem 0.5rem;
   }
+  
   .card {
-    padding: 0.7em 0.18em 0.4em;
+    padding: 0.8rem 0.6rem;
   }
-  .theme-toggle-btn {
-    top: 0.7rem;
-    right: 0.6rem;
+  
+  .calculator-card {
+    padding: 0.7rem 0.5rem;
+  }
+  
+  .screen {
+    padding: 0.7rem;
+    min-height: 55px;
+  }
+  
+  .current-operand {
+    font-size: 1.5rem;
+  }
+  
+  .keypad {
+    gap: 0.35rem;
+  }
+  
+  .keypad button {
+    font-size: 0.95rem;
+    padding: 0.65rem 0;
   }
 }

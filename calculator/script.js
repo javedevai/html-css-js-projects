@@ -1,25 +1,30 @@
 // Theme switcher
-const themeToggleBtn = document.getElementById('theme-toggle');
-themeToggleBtn.addEventListener('click', () => {
+const themeToggle = document.getElementById('theme-toggle');
+themeToggle.addEventListener('change', () => {
   document.body.classList.toggle('dark');
-});
-themeToggleBtn.addEventListener('keydown', (e) => {
-  if (e.key === ' ' || e.key === 'Enter') {
-    e.preventDefault();
-    document.body.classList.toggle('dark');
-  }
 });
 
 // Sidebar navigation
+const sidebar = document.querySelector('.sidebar');
 const navBtns = document.querySelectorAll('.nav-btn');
 const mainSections = document.querySelectorAll('.main-section');
+
 navBtns.forEach((btn) => {
-  btn.addEventListener('click', () => {
+  btn.addEventListener('click', (e) => {
+    e.stopPropagation();
     navBtns.forEach((b) => b.classList.remove('active'));
     mainSections.forEach((s) => s.classList.remove('active'));
     btn.classList.add('active');
     document.getElementById(btn.dataset.section).classList.add('active');
+    sidebar.classList.remove('expanded');
   });
+});
+
+sidebar.addEventListener('click', (e) => {
+  if (e.target.closest('.nav-btn')) return;
+  if (window.innerWidth <= 768) {
+    sidebar.classList.toggle('expanded');
+  }
 });
 
 // Calculator
