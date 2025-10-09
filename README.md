@@ -30,21 +30,6 @@
 - **Vanilla JavaScript** - Pure JS without frameworks
 - **Responsive Design** - Mobile-first approach
 
-## 🚀 Quick Start
-
-1. Clone the repository
-
-```bash
-git clone https://github.com/javedevai/html-css-js-projects.git
-```
-
-2. Open any project folder
-
-```bash
-cd html-css-js-projects
-```
-
-3. Open `index.html` in your browser
 
 ## 💼 Why Choose These Projects?
 
