@@ -68,8 +68,8 @@ Looking for a **frontend developer** who can deliver quality web solutions?
 
 ### 📞 Contact Me
 
-- **LinkedIn**: [Your LinkedIn Profile](https://linkedin.com/in/javedevai)
-- **Portfolio**: [Your Portfolio Website](https://javedevai.netlify.app/)
+- **LinkedIn**: [LinkedIn Profile](https://linkedin.com/in/javedevai)
+- **Portfolio**: [Portfolio Website](https://javedevai.netlify.app/)
 
 ---
 
